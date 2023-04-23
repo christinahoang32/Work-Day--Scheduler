@@ -1,3 +1,6 @@
+
+
+// function to set colors for past/preset/future hours
 function setHourColors() {
     var now =dayjs();
     for (var i = 9; i <18; i++) {
@@ -34,6 +37,10 @@ function loadStoredData () {
         };
     }
 }
+
+// load current date in HTML
+var date = dayjs();
+$('#currentDay').text(date.format('dddd, MMMM D'));
 
 function handleSaveClick(){
 
