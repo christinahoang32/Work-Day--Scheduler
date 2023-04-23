@@ -1,4 +1,4 @@
-
+var eventsData;
 
 // function to set colors for past/preset/future hours
 function setHourColors() {
@@ -14,10 +14,6 @@ function setHourColors() {
         }       
     }
 }
-
-$(function() {
-    setHourColors();
-});
 
 
 
@@ -38,10 +34,31 @@ function loadStoredData () {
     }
 }
 
+
+function handleSaveClick(event){
+    // grab data from HTML
+ var saveButton = $(event.target);
+ var value = hourBlock.children("textarea").val();
+ var hour = hourBlock.atrr('id').split("-"[1]);
+ 
+//  modify our data object
+eventsData["hour" + hour] = value; 
+//  store in local storage
+ localStorage.setItem("calendarEvents", JSON.stringify(eventsData));
+
+
+
+}
+
+
+$('.savBtn').on('click', handleSaveClick);
+
 // load current date in HTML
 var date = dayjs();
 $('#currentDay').text(date.format('dddd, MMMM D'));
 
-function handleSaveClick(){
 
-}
+$(function() {
+    loadStoredData();
+    setHourColors();
+});
