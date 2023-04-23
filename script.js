@@ -37,9 +37,9 @@ function loadStoredData () {
 
 function handleSaveClick(event){
     // grab data from HTML
- var saveButton = $(event.target);
+ var hourBlock = $(event.target).parent();
  var value = hourBlock.children("textarea").val();
- var hour = hourBlock.atrr('id').split("-"[1]);
+ var hour = hourBlock.attr('id').split("-")[1];
  
 //  modify our data object
 eventsData["hour" + hour] = value; 
