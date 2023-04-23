@@ -32,7 +32,10 @@ function loadStoredData () {
             hour17: "",
         };
     }
-}
+        for (var i = 9; i < 18; i++) {
+            $("#hour-" + i + " textarea").val(eventsData["hour" + i]);
+        }
+    }
 
 
 function handleSaveClick(event){
@@ -53,7 +56,7 @@ eventsData["hour" + hour] = value;
 
 $('.savBtn').on('click', handleSaveClick);
 
-// load current date in HTML
+// load current date on page
 var date = dayjs();
 $('#currentDay').text(date.format('dddd, MMMM D'));
 
